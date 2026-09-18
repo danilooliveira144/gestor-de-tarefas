@@ -1,0 +1,347 @@
+### 1. Criar projeto
+POST http://localhost:8080/projetos
+Content-Type: application/json
+
+{
+  "nome": "Testando Tarefas",
+  "descricao": "Teste Tarefas"
+}
+
+### 2. Criar segundo projeto
+POST http://localhost:8080/projetos
+Content-Type: application/json
+
+{
+  "nome": "Testando Tarefas 2",
+  "descricao": "Teste tarefas 2"
+}
+
+### 3. Listar projetos
+GET http://localhost:8080/projetos
+
+### 4. Buscar projeto por ID
+GET http://localhost:8080/projetos/1
+
+### 5. Buscar projeto inexistente - deve retornar 404
+GET http://localhost:8080/projetos/999
+
+### 6. Criar responsável
+POST http://localhost:8080/responsaveis
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "email": "joao@email.com"
+}
+
+### 7. Criar segundo responsável
+POST http://localhost:8080/responsaveis
+Content-Type: application/json
+
+{
+  "nome": "Maria Santos",
+  "email": "maria@email.com"
+}
+
+### 8. Listar responsáveis
+GET http://localhost:8080/responsaveis
+
+### 9. Criar tarefa - prioridade ALTA
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Criar banco de dados",
+  "descricao": "Configurar o PostgreSQL",
+  "status": "NOVA",
+  "prioridade": "ALTA",
+  "prazo": "2026-10-01",
+  "projeto": {
+    "id": 1
+  },
+  "responsavel": {
+    "id": 1
+  }
+}
+
+### 10. Criar tarefa - prioridade MEDIA
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Criar API",
+  "descricao": "Desenvolver os endpoints da aplicação",
+  "status": "NOVA",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-05",
+  "projeto": {
+    "id": 1
+  },
+  "responsavel": {
+    "id": 2
+  }
+}
+
+### 11. Criar tarefa - prioridade BAIXA
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Criar documentação",
+  "descricao": "Documentar os endpoints da API",
+  "status": "NOVA",
+  "prioridade": "BAIXA",
+  "prazo": "2026-10-10",
+  "projeto": {
+    "id": 1
+  }
+}
+
+### 12. Criar tarefa em outro projeto
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Configurar frontend",
+  "descricao": "Preparar estrutura inicial do frontend",
+  "status": "NOVA",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-15",
+  "projeto": {
+    "id": 2
+  },
+  "responsavel": {
+    "id": 1
+  }
+}
+
+### 13. Listar todas as tarefas
+GET http://localhost:8080/tarefas
+
+### 14. Listar tarefas por status
+GET http://localhost:8080/tarefas?status=NOVA
+
+### 15. Listar tarefas por prioridade
+GET http://localhost:8080/tarefas?prioridade=ALTA
+
+### 16. Listar tarefas por projeto
+GET http://localhost:8080/tarefas?projetoId=1
+
+### 17. Listar tarefas por responsável
+GET http://localhost:8080/tarefas?responsavelId=1
+
+### 18. Filtrar por status + prioridade
+GET http://localhost:8080/tarefas?status=NOVA&prioridade=ALTA
+
+### 19. Filtrar por status + projeto
+GET http://localhost:8080/tarefas?status=NOVA&projetoId=1
+
+### 20. Filtrar por status + responsável
+GET http://localhost:8080/tarefas?status=NOVA&responsavelId=1
+
+### 21. Filtrar por prioridade + projeto
+GET http://localhost:8080/tarefas?prioridade=MEDIA&projetoId=1
+
+### 22. Filtrar por prioridade + responsável
+GET http://localhost:8080/tarefas?prioridade=MEDIA&responsavelId=1
+
+### 23. Filtrar por projeto + responsável
+GET http://localhost:8080/tarefas?projetoId=1&responsavelId=1
+
+### 24. Filtrar status + prioridade + projeto
+GET http://localhost:8080/tarefas?status=NOVA&prioridade=ALTA&projetoId=1
+
+### 25. Filtrar status + prioridade + responsável
+GET http://localhost:8080/tarefas?status=NOVA&prioridade=ALTA&responsavelId=1
+
+### 26. Filtrar status + projeto + responsável
+GET http://localhost:8080/tarefas?status=NOVA&projetoId=1&responsavelId=1
+
+### 27. Filtrar prioridade + projeto + responsável
+GET http://localhost:8080/tarefas?prioridade=MEDIA&projetoId=1&responsavelId=2
+
+### 28. Filtrar todos os campos
+GET http://localhost:8080/tarefas?status=NOVA&prioridade=MEDIA&projetoId=1&responsavelId=2
+
+### 29. Buscar tarefa por ID
+GET http://localhost:8080/tarefas/1
+
+### 30. Buscar segunda tarefa
+GET http://localhost:8080/tarefas/2
+
+### 31. Buscar tarefa inexistente - deve retornar 404
+GET http://localhost:8080/tarefas/999
+
+### 32. Atualizar tarefa
+PUT http://localhost:8080/tarefas/1
+Content-Type: application/json
+
+{
+  "titulo": "Criar banco de dados - atualizado",
+  "descricao": "Configurar e testar o PostgreSQL",
+  "status": "EM_ANDAMENTO",
+  "prioridade": "ALTA",
+  "prazo": "2026-10-05",
+  "projeto": {
+    "id": 1
+  },
+  "responsavel": {
+    "id": 1
+  }
+}
+
+### 33. Concluir tarefa
+PUT http://localhost:8080/tarefas/1
+Content-Type: application/json
+
+{
+  "titulo": "Criar banco de dados - atualizado",
+  "descricao": "Configurar e testar o PostgreSQL",
+  "status": "CONCLUIDA",
+  "prioridade": "ALTA",
+  "prazo": "2026-10-05",
+  "projeto": {
+    "id": 1
+  },
+  "responsavel": {
+    "id": 1
+  }
+}
+
+### 34. Consultar tarefa concluída
+GET http://localhost:8080/tarefas/1
+
+### 35. Atualizar responsável da tarefa
+PUT http://localhost:8080/tarefas/2
+Content-Type: application/json
+
+{
+  "titulo": "Criar API",
+  "descricao": "Desenvolver os endpoints da aplicação",
+  "status": "EM_ANDAMENTO",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-05",
+  "projeto": {
+    "id": 1
+  },
+  "responsavel": {
+    "id": 1
+  }
+}
+
+### 36. Excluir tarefa
+DELETE http://localhost:8080/tarefas/3
+
+### 37. Tentar buscar tarefa excluída - deve retornar 404
+GET http://localhost:8080/tarefas/3
+
+### 38. Tentar excluir tarefa inexistente - deve retornar 404
+DELETE http://localhost:8080/tarefas/999
+
+### 39. Criar tarefa sem projeto - deve retornar erro
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa sem projeto",
+  "descricao": "Teste de erro",
+  "status": "NOVA",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-20"
+}
+
+### 40. Criar tarefa com projeto inexistente - deve retornar 404
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa com projeto inexistente",
+  "descricao": "Teste de erro",
+  "status": "NOVA",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-20",
+  "projeto": {
+    "id": 999
+  }
+}
+
+### 41. Criar tarefa com responsável inexistente - deve retornar 404
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa com responsável inexistente",
+  "descricao": "Teste de erro",
+  "status": "NOVA",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-20",
+  "projeto": {
+    "id": 1
+  },
+  "responsavel": {
+    "id": 999
+  }
+}
+
+### 42. Atualizar tarefa inexistente - deve retornar 404
+PUT http://localhost:8080/tarefas/999
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa inexistente",
+  "descricao": "Teste",
+  "status": "NOVA",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-20",
+  "projeto": {
+    "id": 1
+  }
+}
+
+### 43. Criar tarefa EM_ANDAMENTO
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa em andamento",
+  "descricao": "Teste do status EM_ANDAMENTO",
+  "status": "EM_ANDAMENTO",
+  "prioridade": "MEDIA",
+  "prazo": "2026-10-20",
+  "projeto": {
+    "id": 1
+  }
+}
+
+### 44. Criar tarefa CANCELADA
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Tarefa cancelada",
+  "descricao": "Teste do status CANCELADA",
+  "status": "CANCELADA",
+  "prioridade": "BAIXA",
+  "prazo": "2026-10-20",
+  "projeto": {
+    "id": 1
+  }
+}
+
+### 45. Listar tarefas concluídas
+GET http://localhost:8080/tarefas?status=CONCLUIDA
+
+### 46. Listar tarefas em andamento
+GET http://localhost:8080/tarefas?status=EM_ANDAMENTO
+
+### 47. Listar tarefas canceladas
+GET http://localhost:8080/tarefas?status=CANCELADA
+
+### 48. Tarefas de prioridade BAIXA
+GET http://localhost:8080/tarefas?prioridade=BAIXA
+
+### 49. Tarefas de prioridade MEDIA
+GET http://localhost:8080/tarefas?prioridade=MEDIA
+
+### 50. Tarefas de prioridade ALTA
+GET http://localhost:8080/tarefas?prioridade=ALTA

@@ -130,3 +130,9 @@ Pelo IntelliJ IDEA, execute a classe principal da aplicação.
 | `GET` | `/tarefas/{id}` | Buscar tarefa por ID |
 | `PUT` | `/tarefas/{id}` | Atualizar tarefa |
 | `DELETE` | `/tarefas/{id}` | Excluir tarefa |
+
+## Collection
+Link para acessar a Collection : 
+```
+https://www.postman.com/payload-geoscientist-61108236-s-team/workspace/projeto-ps/collection/33973145-898e729b-ac91-41e1-a275-0952088becf4?action=share&source=copy-link&creator=33973145
+```

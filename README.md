@@ -131,6 +131,14 @@ Pelo IntelliJ IDEA, execute a classe principal da aplicação.
 | `PUT` | `/tarefas/{id}` | Atualizar tarefa |
 | `DELETE` | `/tarefas/{id}` | Excluir tarefa |
 
+### Filtros
+| Filtro | Exemplo |
+|---|---|
+| `Status` | `/tarefas?status=NOVA` |
+| `Prioridade` | `/tarefas?prioridade=ALTA` |
+| `Projeto` | `/tarefas?projetoId=1` |
+| `Responsável` | `/tarefas?responsavelId=1` |
+
 ## Collection
 Link para acessar a Collection : 
 ```
